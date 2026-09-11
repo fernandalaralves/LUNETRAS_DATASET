@@ -1,0 +1,5 @@
+label_id,label_name,description
+0,PRE_SILABICO,"Não estabelece relação consistente entre escrita e fala"
+1,SILABICO,"Tende a representar unidades silábicas"
+2,SILABICO_ALFABETICO,"Combina representações silábicas e fonêmicas"
+3,ALFABETICO,"Compreende a relação entre fonemas e grafemas"
