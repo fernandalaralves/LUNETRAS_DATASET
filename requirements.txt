@@ -1,0 +1,36 @@
+# Manipulação de dados
+
+numpy
+pandas
+
+# Processamento de imagens
+
+opencv-python
+Pillow
+
+# Visualização
+
+matplotlib
+seaborn
+
+# Machine Learning
+
+scikit-learn
+
+# Deep Learning
+
+torch
+torchvision
+
+# Jupyter
+
+jupyter
+ipykernel
+
+# Métricas e avaliação
+
+torchmetrics
+
+# Progresso
+
+tqdm
