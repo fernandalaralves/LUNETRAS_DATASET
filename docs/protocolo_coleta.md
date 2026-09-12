@@ -62,10 +62,13 @@ Padrão:
 C001_T001_IMG001.jpg
 
 Onde:
+- C001 = participante (child_id)
+- T001 = atividade (task_id)
+- IMG001 = identificação da imagem (image_id)
 
-C001 = participante
-T001 = atividade
-IMG001 = identificação da imagem
+ O campo `filename` no dataset.csv deve ser idêntico a este nome de arquivo.
+ O campo `image_id` é o identificador lógico (ex: IMG001) e pode ser 
+   usado em relatórios sem o prefixo Cxxx_Txxx.
 
 ## 7. Metadados
 

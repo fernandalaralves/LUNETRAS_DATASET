@@ -42,11 +42,34 @@ IMG0025
 
 Nome do arquivo correspondente à imagem armazenada no dataset.
 
+O nome do arquivo segue o padrão definido no protocolo de coleta:
+
+C001_T001_IMG001.jpg
+
+Onde:
+- C001 = child_id (identificador anônimo da criança)
+- T001 = task_id (identificador da atividade)
+- IMG001 = image_id (identificador lógico da imagem)
+
+O campo `filename` no dataset.csv deve ser **idêntico** ao nome físico 
+do arquivo armazenado em `data/raw/`.
+
 Exemplo:
 
-IMG0025.jpg
+C001_T001_IMG001.jpg
 
-O nome do arquivo deve corresponder ao image_id para facilitar a associação entre os metadados e a imagem.
+ **Atenção:** o campo `image_id` (ex: IMG001) é o identificador lógico 
+e pode ser usado em relatórios e tabelas sem o prefixo Cxxx_Txxx. A 
+associação entre `image_id` e `filename` é feita pelo dataset.csv.
+
+Como cada imagem do dataset atual é proveniente de uma criança diferente, 
+o padrão resultante é:
+
+C001_T001_IMG001.jpg
+C002_T001_IMG002.jpg
+C003_T001_IMG003.jpg
+...
+C017_T001_IMG017.jpg
 
 # 3.3 child_id
 
@@ -354,3 +377,58 @@ docs/
 protocolo_coleta.md → define como os dados são coletados.
 anotacao.md → define como as produções são classificadas.
 dicionario_dados.md → define como as informações são armazenadas e padronizadas.
+
+# 10. Resultados dos LLMs (data/llm_results/)
+
+## 10.1 Objetivo
+
+Armazenar os resultados da classificação automática realizada por LLMs 
+multimodais (OpenAI GPT-4o-mini, Anthropic Claude 3.5 Sonnet e DeepSeek), 
+utilizados como baseline no artigo.
+
+## 10.2 Estrutura dos arquivos
+
+Cada arquivo CSV gerado pelos LLMs contém as seguintes colunas:
+
+| Campo | Tipo | Descrição | Exemplo |
+|-------|------|-----------|---------|
+| image_id | texto | Identificador da imagem | IMG001 |
+| label_real | categórico | Classificação feita por anotador humano | PRE_SILABICO |
+| label_predito | categórico | Classificação gerada pelo LLM | SILABICO |
+| justificativa | texto | Explicação gerada pelo LLM | "Presença de uma letra por sílaba..." |
+| confianca | numérico | Confiança declarada pelo LLM (0.0 a 1.0) | 0.85 |
+| llm | texto | Identificador do modelo utilizado | openai-gpt-4o-mini |
+
+## 10.3 Organização dos arquivos
+data/llm_results/
+├── openai/
+│ └── resultados.csv
+├── claude/
+│ └── resultados.csv
+├── deepseek/
+│ └── resultados.csv
+└── comparativo_llms.csv
+
+O arquivo `comparativo_llms.csv` consolida os resultados dos três modelos 
+em uma única tabela, com uma coluna adicional `llm` para identificar a origem.
+
+## 10.4 Padronização das classes
+
+Os valores de `label_real` e `label_predito` devem seguir exatamente 
+a padronização definida em `labels.csv`:
+
+- PRE_SILABICO
+- SILABICO
+- SILABICO_ALFABETICO
+- ALFABETICO
+
+Valores como `ERRO` podem aparecer em `label_predito` quando a API falhar 
+ou retornar algo fora do formato esperado.
+
+## 10.5 Documentação relacionada
+
+Os resultados devem ser discutidos em conjunto com:
+
+- `docs/llms_testados.md` — descrição dos modelos, prompt e análise.
+- `notebooks/05_testes_llms.ipynb` — notebook de execução.
+- `src/llms/` — código dos clientes das APIs.
