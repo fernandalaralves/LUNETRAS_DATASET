@@ -1,36 +1,23 @@
-# Manipulação de dados
-
-numpy
+# Base
 pandas
-
-# Processamento de imagens
-
-opencv-python
-Pillow
-
-# Visualização
-
+numpy
 matplotlib
 seaborn
-
-# Machine Learning
-
 scikit-learn
+tqdm
+python-dotenv
 
-# Deep Learning
-
+# Visão computacional
+Pillow
+opencv-python
 torch
 torchvision
 
-# Jupyter
+# LLMs
+openai>=1.30.0
+anthropic>=0.25.0
+requests
 
+# Notebooks
 jupyter
 ipykernel
-
-# Métricas e avaliação
-
-torchmetrics
-
-# Progresso
-
-tqdm

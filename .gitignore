@@ -1,35 +1,15 @@
-# Python
-__pycache__/
-*.py[cod]
-
-# Virtual environment
+# Ambiente
 .venv/
-venv/
-env/
+__pycache__/
+*.pyc
 
-# Jupyter
+.env
+data/raw/
+data/llm_results/
+
+# Notebooks
 .ipynb_checkpoints/
 
-# Machine Learning
-*.pt
-*.pth
-*.h5
-*.keras
-*.pkl
-
-# Dataset
-data/raw/*
-data/interim/*
-data/processed/*
-
-# Exceptions
-!data/raw/.gitkeep
-!data/interim/.gitkeep
-!data/processed/.gitkeep
-
-# Environment
-.env
-
-# OS
-.DS_Store
-Thumbs.db
+# Modelos
+models/*.pt
+models/*.h5
