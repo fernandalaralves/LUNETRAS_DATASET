@@ -6,6 +6,8 @@ __pycache__/
 .env
 data/raw/
 data/llm_results/
+!data/llm_results/
+!data/llm_results/resultados_completos.csv
 
 # Notebooks
 .ipynb_checkpoints/
